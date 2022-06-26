@@ -1,0 +1,24 @@
+.sidebar-container{
+  width: 180px;
+  background-color: #F88F14;
+  height: calc(100vh - 70px);
+  ul{
+    margin: 0;
+    list-style: none;
+    padding: 0;
+    li{
+      text-align: center;
+      border-bottom: 2px solid white;
+      a{
+        height: 40px;
+        font-size: 18px;
+        line-height: 40px;
+        font-weight: 400;
+        color: white;
+        width: 100%;
+        display: block;
+        text-decoration: none;
+      }
+    }
+  }
+}
