@@ -2,6 +2,9 @@
   width: 180px;
   background-color: #F88F14;
   height: calc(100vh - 70px);
+  flex-basis: 180px;
+	flex-grow: 0;
+	flex-shrink: 0;
   ul{
     margin: 0;
     list-style: none;
