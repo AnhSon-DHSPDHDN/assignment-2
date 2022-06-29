@@ -1,0 +1,5 @@
+export const TASK_STATUS = {
+  NEW: 'NEW',
+  DOING_TASK: 'DOING_TASK',
+  DONE_TASK: 'DONE_TASK'
+}

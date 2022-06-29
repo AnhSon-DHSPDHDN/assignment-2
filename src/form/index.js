@@ -1,25 +1,71 @@
 import React from 'react'
+import { Controller } from 'react-hook-form'
 import './style.scss'
 
-export default function FormTask({ isEdit = false }) {
+export default function FormTask({
+  isEdit = false,
+  methods,
+  onValid
+}) {
+  const { control, handleSubmit } = methods
+
   return (
     <div className='form'>
-      <form>
+      <form onSubmit={handleSubmit(onValid)}>
         <div className='form__input'>
           <label htmlFor='title'>Title</label>
-          <input type={'text'} id='title' placeholder='Input title task' />
+          <Controller
+            name='title'
+            control={control}
+            render={({ field }) => (<input
+              type={'text'}
+              id='title'
+              placeholder='Input title task'
+              {...field}
+            />)}
+          />
         </div>
         <div className='form__input'>
           <label htmlFor='creator'>Creator</label>
-          <input type={'text'} id='creator' placeholder='Input Creator' />
+          <Controller
+            name='creator'
+            control={control}
+            render={({ field }) => (<input
+              type={'text'}
+              id='creator'
+              placeholder='Input Creator'
+              {...field}
+            />)}
+          />
         </div>
         <div className='form__input'>
           <label htmlFor='create-at'>Create at</label>
-          <input type={'text'} id='create-at' disabled placeholder='Input create at' />
+          <Controller
+            name='createAt'
+            control={control}
+            render={({ field }) => (
+              <input
+                type={'text'}
+                id='createAt'
+                disabled
+                placeholder='Input create at'
+                {...field}
+              />
+            )}
+          />
         </div>
         <div className='form__input'>
           <label htmlFor='description'>Description</label>
-          <input type={'text'} id='description' placeholder='Input description task' />
+          <Controller
+            name='description'
+            control={control}
+            render={({ field }) => (<input
+              type={'text'}
+              id='description'
+              placeholder='Input description task'
+              {...field}
+            />)}
+          />
         </div>
         {isEdit && <>
           <div className='form__radio'>
@@ -42,7 +88,12 @@ export default function FormTask({ isEdit = false }) {
           </div>
         </>
         }
-        {!isEdit && <button className='form__btn form__btn--save'>Save</button>}
+        {!isEdit && <button
+          type={'submit'}
+          className='form__btn form__btn--save'
+        >
+          Save
+        </button>}
       </form >
     </div >
   )

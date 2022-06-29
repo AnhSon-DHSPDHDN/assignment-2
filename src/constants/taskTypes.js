@@ -1,0 +1,5 @@
+export const TASK_TYPE = {
+  GET_ALL_TASK: 'GET_ALL_TASK',
+  GET_TASK_BY_ID: 'GET_TASK_BY_ID',
+  ADD_NEW_TASK: 'ADD_NEW_TASK',
+}

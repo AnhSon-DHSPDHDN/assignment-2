@@ -24,4 +24,9 @@ export const ROUTES = {
     exact: true,
     name: 'Create Task'
   },
+  EDIT_TASK: {
+    path: '/edit-task/:id',
+    exact: true,
+    name: 'Edit Task'
+  },
 }

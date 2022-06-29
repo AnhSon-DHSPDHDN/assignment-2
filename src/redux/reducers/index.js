@@ -1,8 +1,6 @@
-import { combineReducers } from "redux";
-import { tasksListReducer } from "./taskReducer";
+import { combineReducers } from 'redux'
+import { tasksReducer } from './tasksReducer'
 
-const appReducers = combineReducers({
-  tasks: tasksListReducer,
+export const appReducer = combineReducers({
+  tasks: tasksReducer
 })
-
-export default appReducers

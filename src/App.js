@@ -7,6 +7,7 @@ import AllTask from './pages/allTask';
 import CreateTask from './pages/createTask';
 import DoingTask from './pages/doingTask';
 import DoneTask from './pages/doneTask';
+import EditTask from './pages/editTask';
 import NewTask from './pages/newTask';
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
             <Route exact={ROUTES.DOING_TASK.exact} path={ROUTES.DOING_TASK.path} component={DoingTask} />
             <Route exact={ROUTES.DONE_TASK.exact} path={ROUTES.DONE_TASK.path} component={DoneTask} />
             <Route exact={ROUTES.CREATE_TASK.exact} path={ROUTES.CREATE_TASK.path} component={CreateTask} />
+            <Route exact={ROUTES.EDIT_TASK.exact} path={ROUTES.EDIT_TASK.path} component={EditTask} />
           </Switch>
         </>
       </MainLayout>

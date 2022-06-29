@@ -1,13 +1,12 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import Card from '../../components/card'
-import { actGetAllTasks } from '../../redux/actions/tasksListAct'
+import { actGetAllTasks } from '../../redux/actions/taskAction'
 import './style.scss'
 
 export default function AllTask() {
   const tasksList = useSelector(state => state?.tasks?.tasksList)
   const dispatch = useDispatch()
-  console.log(tasksList);
 
   useEffect(() => {
     dispatch(actGetAllTasks())
@@ -16,21 +15,9 @@ export default function AllTask() {
 
   return (
     <div className='all-task'>
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
+      {!!tasksList.length && tasksList.map((task, index) => {
+        return <Card key={index} task={task} />
+      })}
     </div>
   )
 }
