@@ -7,12 +7,15 @@ import { useHistory } from 'react-router-dom'
 import { actAddNewTask } from '../../redux/actions/taskAction'
 import { ROUTES } from '../../constants/routes'
 import format from 'date-fns/format'
+import { yupResolver } from '@hookform/resolvers/yup'
+import { addSchema } from '../../form/validates'
 
 export default function CreateTask() {
   const dispatch = useDispatch()
   const history = useHistory()
   const methods = useForm({
-    defaultValues: { ...INITIAL_VALUES, createAt: format(new Date(), 'yyyy/MM/dd HH:mm') }
+    defaultValues: { ...INITIAL_VALUES, createAt: format(new Date(), 'yyyy/MM/dd HH:mm') },
+    resolver: yupResolver(addSchema)
   })
 
   const onValid = (values, e) => {

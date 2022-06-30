@@ -19,6 +19,13 @@
   .form__btn--save{
     margin: 20px auto;
   }
+  .form__error{
+    color: red;
+    font-size: 12px;
+    margin-top: 5px;
+    text-align: left;
+    margin-left: 100px;
+  }
   label{
     width: 100px;
     display: inline-block;

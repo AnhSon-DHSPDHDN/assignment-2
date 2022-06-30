@@ -7,7 +7,7 @@ export default function FormTask({
   methods,
   onValid
 }) {
-  const { control, handleSubmit } = methods
+  const { control, handleSubmit, formState: { errors } } = methods
 
   return (
     <div className='form'>
@@ -24,6 +24,7 @@ export default function FormTask({
               {...field}
             />)}
           />
+          {!!errors && !!errors.title && <div className='form__error'>{errors?.title?.message}</div>}
         </div>
         <div className='form__input'>
           <label htmlFor='creator'>Creator</label>
@@ -37,6 +38,7 @@ export default function FormTask({
               {...field}
             />)}
           />
+          {!!errors && !!errors.creator && <div className='form__error'>{errors?.creator?.message}</div>}
         </div>
         <div className='form__input'>
           <label htmlFor='create-at'>Create at</label>
@@ -53,6 +55,7 @@ export default function FormTask({
               />
             )}
           />
+          {!!errors && !!errors.createAt && <div className='form__error'>{errors?.createAt?.message}</div>}
         </div>
         <div className='form__input'>
           <label htmlFor='description'>Description</label>
@@ -66,6 +69,7 @@ export default function FormTask({
               {...field}
             />)}
           />
+          {!!errors && !!errors.description && <div className='form__error'>{errors?.description?.message}</div>}
         </div>
         {isEdit && <>
           <div className='form__radio'>
