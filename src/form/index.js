@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Controller } from 'react-hook-form'
 import './style.scss'
 
@@ -7,38 +7,74 @@ export default function FormTask({
   methods,
   onValid
 }) {
+  const [formState, setFormState] = useState({
+    title: '',
+    creator: ''
+  })
+  const [formErrors, setFormErrors] = useState({})
   const { control, handleSubmit } = methods
+
+  const handleOnChange = e => {
+    const { name, value } = e.target
+    setFormState({
+      ...formState,
+      [name]: value
+    })
+    setFormErrors({})
+  }
+
+  const handleSubmitForm = (e) => {
+    e.preventDefault()
+    if (!formState.title || !formState.creator) {
+      let validate = { ...formErrors }
+      if (!formState.title) {
+        validate = {
+          ...validate,
+          title: 'Title is required!'
+        }
+      }
+      if (!formState.creator) {
+        validate = {
+          ...validate,
+          creator: 'creator is required!'
+        }
+      }
+      setFormErrors(validate)
+      return;
+    }
+
+    console.log('submit');
+    // Call submit
+  }
 
   return (
     <div className='form'>
-      <form onSubmit={handleSubmit(onValid)}>
+      <form onSubmit={handleSubmitForm}>
         <div className='form__input'>
           <label htmlFor='title'>Title</label>
-          <Controller
+          <input
+            type={'text'}
+            id='title'
             name='title'
-            control={control}
-            render={({ field }) => (<input
-              type={'text'}
-              id='title'
-              placeholder='Input title task'
-              {...field}
-            />)}
+            placeholder='Input title task'
+            value={formState.title}
+            onChange={handleOnChange}
           />
+          {!!formErrors.title && <div>{formErrors.title}</div>}
         </div>
         <div className='form__input'>
           <label htmlFor='creator'>Creator</label>
-          <Controller
+          <input
+            type={'text'}
+            id='creator'
             name='creator'
-            control={control}
-            render={({ field }) => (<input
-              type={'text'}
-              id='creator'
-              placeholder='Input Creator'
-              {...field}
-            />)}
+            placeholder='Input Creator'
+            value={formState.creator}
+            onChange={handleOnChange}
           />
+          {!!formErrors.creator && <div>{formErrors.creator}</div>}
         </div>
-        <div className='form__input'>
+        {/* <div className='form__input'>
           <label htmlFor='create-at'>Create at</label>
           <Controller
             name='createAt'
@@ -87,7 +123,7 @@ export default function FormTask({
             <button className='form__btn'>Delete</button>
           </div>
         </>
-        }
+        } */}
         {!isEdit && <button
           type={'submit'}
           className='form__btn form__btn--save'
